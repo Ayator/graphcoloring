@@ -1,3 +1,5 @@
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args){
         String[] filenames = new String[]{
@@ -43,8 +45,9 @@ public class Main {
             // st.start();
             System.out.println();
             System.out.println("Running: " + filename);
-            Graph gc = Graph.LoadFromInputFile("../input/" + filename);
-            System.out.println(gc);
+            Graph graph = Graph.LoadFromInputFile("../input/" + filename);
+            Set<Set<Integer>> solution = GraphColoring.GreedyIndependentSet(graph);
+            System.out.println(solution);
             // st.stopThread();
             // st.printData(true, true);
         }

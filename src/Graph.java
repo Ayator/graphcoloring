@@ -8,8 +8,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Graph {
-    private int V, E;
-    private Map<Integer, HashSet<Integer>> edges; 
+    protected int V, E;
+    protected Map<Integer, HashSet<Integer>> edges;
+    protected Map<Integer, Integer> degrees;
 
     public int getNumberOfVertices() {
         return V;
@@ -27,17 +28,49 @@ public class Graph {
         return edges;
     }
 
-    private Graph(int V, int E){
+    public Graph(int V){
         this.V = V;
-        this.E = E;
+        this.E = 0;
+        degrees = new HashMap<>(V);
         edges = new HashMap<>(V);
         for (int i = 0; i < V; i++) {
+            degrees.put(i, 0);
             edges.put(i, new HashSet<>());
         }
     }
 
+    protected Graph(int V, int E){
+        this(V);
+        this.E = E;
+    }
+
     private boolean addEdge(int u, int v){
-        return edges.get(u).add(v) && edges.get(v).add(u);
+        boolean added = edges.get(u).add(v) && edges.get(v).add(u);
+        if(added){
+            increaseDegree(u);
+            increaseDegree(v);
+        }
+        return added;
+    }
+
+    private void increaseDegree(int v){
+        int degV = degrees.get(v);
+        degrees.put(v, degV + 1);
+    }
+
+    private void decreaseDegree(int v){
+        int degV = degrees.get(v);
+        degrees.put(v, degV - 1);
+    }
+
+    public HashSet<Integer> removeVertex(int u){
+        HashSet<Integer> adjacent = edges.get(u);
+        for (int v : adjacent) {
+            edges.get(v).remove(u);
+            decreaseDegree(v);
+        }
+        degrees.remove(u);
+        return edges.remove(u);
     }
     
     public static Graph LoadFromInputFile(String inputFilepath){
@@ -79,10 +112,10 @@ public class Graph {
         if(!iterator.hasNext())
             return null;
         int i = iterator.next();
-        String str = "Graph: [\n\t" + i + " -> " + edges.get(i);
+        String str = "Graph: [\n\t" + i + "(Deg: " + degrees.get(i) + ") -> " + edges.get(i);
         while(iterator.hasNext()){
             i = iterator.next();
-            str += ",\n\t" + i + " -> " + edges.get(i);
+            str += ",\n\t" + i + "(Deg: " + degrees.get(i) + ") -> " + edges.get(i);
         }
         str += "\n]";
         return str;
