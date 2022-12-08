@@ -6,18 +6,16 @@
 
 using namespace std;
 
-
-
-int main(){
-  cout << "Enter the input file name: ";
-  string input_filename;
-  cin >> input_filename;
+int main(int argc, char* argv[]){
+  // cout << "Enter the input file name: ";
+  string input_filename = argv[1];
+  // cin >> input_filename;
   ifstream input;
   input.open(input_filename.data());
   assert(input.is_open());
-  cout << "Enter the output file name: ";
-  string output_filename;
-  cin >> output_filename;
+  // cout << "Enter the output file name: ";
+  string output_filename = argv[2];
+  // cin >> output_filename;
   ifstream output;
   output.open(output_filename.data());
   assert(output.is_open());

@@ -1,0 +1,143 @@
+Running: gc_4_1
+Runtime: 108ms
+Max memory: 2mb
+
+Running: gc_20_1
+Runtime: 10ms
+Max memory: 1mb
+
+Running: gc_20_3
+Runtime: 18ms
+Max memory: 1mb
+
+Running: gc_20_5
+Runtime: 20ms
+Max memory: 1mb
+
+Running: gc_20_7
+Runtime: 17ms
+Max memory: 1mb
+
+Running: gc_20_9
+Runtime: 18ms
+Max memory: 1mb
+
+Running: gc_50_1
+Runtime: 11ms
+Max memory: 1mb
+
+Running: gc_50_3
+Runtime: 14ms
+Max memory: 1mb
+
+Running: gc_50_5
+Runtime: 14ms
+Max memory: 2mb
+
+Running: gc_50_7
+Runtime: 20ms
+Max memory: 3mb
+
+Running: gc_50_9
+Runtime: 27ms
+Max memory: 2mb
+
+Running: gc_70_1
+Runtime: 8ms
+Max memory: 1mb
+
+Running: gc_70_3
+Runtime: 12ms
+Max memory: 2mb
+
+Running: gc_70_5
+Runtime: 15ms
+Max memory: 2mb
+
+Running: gc_70_7
+Runtime: 20ms
+Max memory: 5mb
+
+Running: gc_70_9
+Runtime: 25ms
+Max memory: 3mb
+
+Running: gc_100_1
+Runtime: 6ms
+Max memory: 2mb
+
+Running: gc_100_3
+Runtime: 16ms
+Max memory: 2mb
+
+Running: gc_100_5
+Runtime: 19ms
+Max memory: 3mb
+
+Running: gc_100_7
+Runtime: 34ms
+Max memory: 5mb
+
+Running: gc_100_9
+Runtime: 62ms
+Max memory: 7mb
+
+Running: gc_250_1
+Runtime: 63ms
+Max memory: 4mb
+
+Running: gc_250_3
+Runtime: 104ms
+Max memory: 11mb
+
+Running: gc_250_5
+Runtime: 222ms
+Max memory: 61mb
+
+Running: gc_250_7
+Runtime: 196ms
+Max memory: 72mb
+
+Running: gc_250_9
+Runtime: 333ms
+Max memory: 78mb
+
+Running: gc_500_1
+Runtime: 93ms
+Max memory: 15mb
+
+Running: gc_500_3
+Runtime: 378ms
+Max memory: 77mb
+
+Running: gc_500_5
+Runtime: 624ms
+Max memory: 82mb
+
+Running: gc_500_7
+Runtime: 1174ms
+Max memory: 171mb
+
+Running: gc_500_9
+Runtime: 1900ms
+Max memory: 187mb
+
+Running: gc_1000_1
+Runtime: 395ms
+Max memory: 85mb
+
+Running: gc_1000_3
+Runtime: 1680ms
+Max memory: 185mb
+
+Running: gc_1000_5
+Runtime: 4770ms
+Max memory: 340mb
+
+Running: gc_1000_7
+Runtime: 7335ms
+Max memory: 524mb
+
+Running: gc_1000_9
+Runtime: 13180ms
+Max memory: 868mb

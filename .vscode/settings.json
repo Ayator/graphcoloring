@@ -6,6 +6,8 @@
     },
     "files.associations": {
         "iostream": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "*.rmd": "markdown",
+        "iosfwd": "cpp"
     }
 }
