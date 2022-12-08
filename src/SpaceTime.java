@@ -5,7 +5,7 @@ public class SpaceTime extends Thread{
     private long initialTime;
     private final AtomicBoolean running = new AtomicBoolean(true);
     private final long megabyte = 1024L * 1024L;
-    private final long gigabyte = megabyte * 1024L;
+    // private final long gigabyte = megabyte * 1024L;
     private long maxMemoryUsed;
     
     private Runtime runtime = Runtime.getRuntime();
@@ -22,9 +22,9 @@ public class SpaceTime extends Thread{
         return kb / megabyte;
     }
 
-    private long bytesToGb(long kb){
-        return kb / gigabyte;
-    }
+    // private long bytesToGb(long kb){
+    //     return kb / gigabyte;
+    // }
 
     @Override
     public void run() {
