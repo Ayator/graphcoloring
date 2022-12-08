@@ -28,6 +28,8 @@ public class Graph {
         return edges;
     }
 
+    protected Graph(){}
+
     public Graph(int V){
         this.V = V;
         this.E = 0;

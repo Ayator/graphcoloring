@@ -1,7 +1,25 @@
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 public class GraphColoring {
+    private static Random random = new Random();
+
+    public static String SetsToString(Set<Set<Integer>> sets, int V){
+        int[] colors = new int[V];
+        int currentColor = 0;
+        for (Set<Integer> set : sets) {
+            for (int i : set) {
+                colors[i] = currentColor;
+            }
+            currentColor++;
+        }
+        String output = currentColor + "\n" + colors[0];
+        for (int i = 1; i < colors.length; i++) {
+            output += " " + colors[i];
+        }
+        return output;
+    }
 
     public static Set<Set<Integer>> GreedyIndependentSet(Graph G){
         // sets = nullSet
@@ -51,9 +69,11 @@ public class GraphColoring {
         if(isFirstIteration){
             int maxDeg = Integer.MIN_VALUE;
             int maxV = 0;
-            for (int v : XY.V()) {
-                int degree;
-                if(XY.isInX(v) && (degree = XY.getDegreeX(v)) > maxDeg){
+            for (int v : XY.X()) {
+                int degree = XY.getDegreeX(v);
+                // if greater than, replace max
+                // else if equal, 50% chance to replace max
+                if(degree > maxDeg || (degree == maxDeg && random.nextInt(2) == 0)){
                     maxDeg = degree;
                     maxV = v;
                 }
@@ -64,9 +84,11 @@ public class GraphColoring {
         else{
             int maxDeg = Integer.MIN_VALUE;
             int maxV = 0;
-            for (int v : XY.Y()) {
+            for (int v : XY.X()) {
                 int degree = XY.getDegreeY(v);
-                if(degree > maxDeg || (degree == maxDeg && XY.getDegreeX(v) < XY.getDegreeX(maxV))){
+                if((degree > maxDeg ||
+                    (degree == maxDeg && (XY.getDegreeX(v) < XY.getDegreeX(maxV) ||
+                        (XY.getDegreeX(v) == XY.getDegreeX(maxV) && random.nextInt(2) == 0))))){
                     maxDeg = degree;
                     maxV = v;
                 }

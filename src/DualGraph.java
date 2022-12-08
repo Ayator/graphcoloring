@@ -7,28 +7,31 @@ public class DualGraph extends Graph{
     private Map<Integer, Boolean> isInX;
     private int countX;
     private Map<Integer, Integer> degreesX;
-    private Set<Integer> Y;
+    private Set<Integer> X;
 
     private DualGraph(int V, int E){
-        super(V, E);
+        super.V = V;
+        super.E = E;
+        super.degrees = new HashMap<>(V);
+        super.edges = new HashMap<>(V);
         this.degreesX = new HashMap<>(V);
         this.isInX = new HashMap<>(V);
-        for (int i = 0; i < V; i++) {
-            this.degreesX.put(i, 0);
-            this.isInX.put(i, true);
-        }
-        this.countX = V;
-        this.Y = new HashSet<>();
+        this.X = new HashSet<>(V);
     }
 
     public static DualGraph FromGraph(Graph graph) {
         DualGraph newGraph = new DualGraph(graph.V, graph.E);
+        newGraph.countX = graph.V().size();
         for (int u : graph.V()) {
+            newGraph.X.add(u);
+            newGraph.isInX.put(u, true);
+            newGraph.edges.put(u, new HashSet<>());
             HashSet<Integer> adjU = newGraph.edges.get(u);
             for (int v : graph.E().get(u)) {
                 adjU.add(v);
             }
             newGraph.degrees.put(u, graph.degrees.get(u));
+            newGraph.degreesX.put(u, graph.degrees.get(u));
         }
         return newGraph;
     }
@@ -37,6 +40,7 @@ public class DualGraph extends Graph{
     public HashSet<Integer> removeVertex(int u){
         countX--;
         degreesX.remove(u);
+        X.remove(u);
         return super.removeVertex(u);
     }
 
@@ -62,7 +66,9 @@ public class DualGraph extends Graph{
     }
 
     public void moveToY(int u){
-        Y.add(u);
+        if(!isInX(u))
+            return;
+        X.remove(u);
         isInX.put(u, false);
         countX--;
         for (int v : edges.get(u)) {
@@ -70,7 +76,7 @@ public class DualGraph extends Graph{
         }
     }
 
-    public Set<Integer> Y() {
-        return Y;
+    public Set<Integer> X() {
+        return X;
     }
 }
